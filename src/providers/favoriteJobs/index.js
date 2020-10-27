@@ -1,6 +1,7 @@
 import React, { useEffect, createContext, useReducer } from 'react'
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import { addJob, removeJob, isFavoriteJob } from '../utils/favoriteJobs'
+import { favoritesReducer } from './fovoritesReducer'
+import { isFavoriteJob } from '../../utils/favoriteJobs'
 
 const STORAGE_KEY = 'favorite_jobs'
 
@@ -13,15 +14,6 @@ const getFavorites = async () => {
   } catch (e) {
     console.log('Failed to fetch favorite jobs from storage')
   }
-}
-
-const favoritesReducer = (state, { type, data, job }) => {
-  const actions = {
-    cleanFavorites: [],
-    setFavorites: data,
-    handleFavorite: isFavoriteJob(state, job) ? removeJob(state, job) : addJob(state, job)
-  }
-  return actions[type]
 }
 
 const FavoritesProvider = ({ children }) => {
