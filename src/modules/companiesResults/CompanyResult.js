@@ -18,7 +18,7 @@ const CompanyResult = ({ title, image, website, availableJobs, onPress }) => {
         <TextPair
           label="Website"
           text={website}
-          onPress={() => Linking.openUrl(website)}
+          onPress={() => Linking.openURL(website)}
           numberOfLines={1}
         />
         <TextPair label="Jobs" text={availableJobs} size="xl" align="right" numberOfLines={1} />
